@@ -1,0 +1,18 @@
+.inputLabel {
+	display: block;
+	margin: 0;
+	margin-bottom: 44px;
+	width: 100%;
+	height: 56px;
+ }
+.input {
+	background: #FFFFFF;
+	box-shadow: 0px 16px 32px rgba(202, 203, 210, 0.25);
+	border-radius: 8px;
+	border: none;
+	width: 100%;
+	height: 64px;
+	padding: 18px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+}
