@@ -10,7 +10,7 @@ const LabelForm = ({
 }) => {
   return (
     <>
-      <label htmlFor={name} className="inputLabel">
+      <label htmlFor={name} className="input_lable">
         <input
           type={type}
           name={name}
