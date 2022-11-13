@@ -52,12 +52,14 @@ const Form = () => {
   return (
     <div>
       <div>
-        <h2 className="title">Contact Us</h2>
-        <p>The Voodoo team is looking forward to hearing from you!</p>
+        <h2 className="form_title">Contact Us</h2>
+        <p className="form_text">
+          The Voodoo team is looking forward to hearing from you!
+        </p>
       </div>
 
       <form className="form" onSubmit={handleSubmit}>
-        <div className="input_wrapp">
+        <div className="form_input_container">
           <LabelForm
             type="text"
             name="name"
@@ -73,9 +75,9 @@ const Form = () => {
             value={position}
           />
 
-          <div className="custom_select">
+          <div className="form_custom_select">
             <select
-              className="select"
+              className="form_select"
               defaultValue=""
               value={practice}
               onChange={handleChange}
@@ -89,7 +91,7 @@ const Form = () => {
               <option value="4">option 4</option>
               <option value="5">option 5</option>
             </select>
-            <svg className="select_icon">
+            <svg className="form_select_icon">
               <use href="/symbol-defs.svg#shape"></use>
             </svg>
           </div>
@@ -108,9 +110,9 @@ const Form = () => {
             placeholder="Phone Number*"
             value={phone}
           />
-          <div className="custom_select">
+          <div className="form_custom_select">
             <select
-              className="select"
+              className="form_select"
               defaultValue={"hold"}
               onChange={handleChange}
             >
@@ -123,13 +125,13 @@ const Form = () => {
               <option value="4">option 4</option>
               <option value="5">option 5</option>
             </select>
-            <svg className="select_icon">
+            <svg className="form_select_icon">
               <use href="/symbol-defs.svg#shape"></use>
             </svg>
           </div>
         </div>
-        <div className="custom_select">
-          <select className="select" defaultValue={"hold"}>
+        <div className="form_custom_select">
+          <select className="form_select" defaultValue={"hold"}>
             <option value="hold" disabled>
               Type of Inquiry*
             </option>
@@ -139,14 +141,17 @@ const Form = () => {
             <option value="4">option 4</option>
             <option value="5">option 5</option>
           </select>
-          <svg className="select_icon">
+          <svg className="form_select_icon">
             <use href="/symbol-defs.svg#shape"></use>
           </svg>
         </div>
 
-        <textarea className="textarea" placeholder="Enter Message*"></textarea>
+        <textarea
+          className="form_textarea"
+          placeholder="Enter Message*"
+        ></textarea>
 
-        <button className="button" type="submit">
+        <button className="form_button" type="submit">
           Send Message
         </button>
       </form>
