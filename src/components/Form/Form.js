@@ -1,12 +1,31 @@
 import "./css/Form.css";
 import { useState } from "react";
 import LabelForm from "../LabelForm/LabelForm";
+import CustomSelect from "../CustomSelect/CustomSelect";
+
+const typeOption = ["option 1", "option 2", "option 3", "option 4", "option 5"];
+const professionOption = [
+  "option 1",
+  "option 2",
+  "option 3",
+  "option 4",
+  "option 5",
+];
+const practiceOption = [
+  "option 1",
+  "option 2",
+  "option 3",
+  "option 4",
+  "option 5",
+];
+
 const Form = () => {
   const [name, setName] = useState("");
   const [position, setPosition] = useState("");
   const [mail, setMail] = useState("");
   const [phone, setPhone] = useState("");
   const [practice, setPractice] = useState("hold");
+
   // const [profession, setProfession] = useState("");
   // const [type, setType] = useState("");
   const handleChange = (e) => {
@@ -75,26 +94,10 @@ const Form = () => {
             value={position}
           />
 
-          <div className="form_custom_select">
-            <select
-              className="form_select"
-              defaultValue=""
-              value={practice}
-              onChange={handleChange}
-            >
-              <option value="hold" disabled>
-                Practice / Institution*
-              </option>
-              <option value="1">option 1</option>
-              <option value="2">option 2</option>
-              <option value="3">option 3</option>
-              <option value="4">option 4</option>
-              <option value="5">option 5</option>
-            </select>
-            <svg className="form_select_icon">
-              <use href="/symbol-defs.svg#shape"></use>
-            </svg>
-          </div>
+          <CustomSelect
+            header={"Practice / Institution*"}
+            options={practiceOption}
+          />
           <LabelForm
             type="mail"
             name="mail"
@@ -110,42 +113,13 @@ const Form = () => {
             placeholder="Phone Number*"
             value={phone}
           />
-          <div className="form_custom_select">
-            <select
-              className="form_select"
-              defaultValue={"hold"}
-              onChange={handleChange}
-            >
-              <option value="hold" disabled>
-                Medical Profession*
-              </option>
-              <option value="1">option 1</option>
-              <option value="2">option 2</option>
-              <option value="3">option 3</option>
-              <option value="4">option 4</option>
-              <option value="5">option 5</option>
-            </select>
-            <svg className="form_select_icon">
-              <use href="/symbol-defs.svg#shape"></use>
-            </svg>
-          </div>
-        </div>
-        <div className="form_custom_select">
-          <select className="form_select" defaultValue={"hold"}>
-            <option value="hold" disabled>
-              Type of Inquiry*
-            </option>
-            <option value="1">option 1</option>
-            <option value="2">option 2</option>
-            <option value="3">option 3</option>
-            <option value="4">option 4</option>
-            <option value="5">option 5</option>
-          </select>
-          <svg className="form_select_icon">
-            <use href="/symbol-defs.svg#shape"></use>
-          </svg>
+          <CustomSelect
+            header={"Medical Profession*"}
+            options={professionOption}
+          />
         </div>
 
+        <CustomSelect header={"Type of Inquiry*"} options={typeOption} />
         <textarea
           className="form_textarea"
           placeholder="Enter Message*"
