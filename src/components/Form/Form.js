@@ -1,14 +1,22 @@
 import "./css/Form.css";
 import { useState } from "react";
 import LabelForm from "../LabelForm/LabelForm";
+import CustomSelect from "../CustomSelect/CustomSelect";
+import {
+  typeOption,
+  professionOption,
+  practiceOption,
+} from "../../constants/constants";
 const Form = () => {
   const [name, setName] = useState("");
   const [position, setPosition] = useState("");
   const [mail, setMail] = useState("");
   const [phone, setPhone] = useState("");
-  const [practice, setPractice] = useState("hold");
-  // const [profession, setProfession] = useState("");
-  // const [type, setType] = useState("");
+  const [practice, setPractice] = useState("");
+  const [profession, setProfession] = useState("");
+  const [type, setType] = useState("");
+  const [message, setMessage] = useState("");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -32,6 +40,16 @@ const Form = () => {
       case "practice":
         setPractice(value);
         break;
+      case "profession":
+        setProfession(value);
+        break;
+      case "type":
+        setType(value);
+        break;
+
+      case "message":
+        setMessage(value);
+        break;
 
       default:
         return;
@@ -46,7 +64,12 @@ const Form = () => {
   const resetInput = () => {
     setName("");
     setPosition("");
+    setMail("");
+    setPhone("");
     setPractice("");
+    setProfession("");
+    setType("");
+    setMessage("");
   };
 
   return (
@@ -75,26 +98,12 @@ const Form = () => {
             value={position}
           />
 
-          <div className="form_custom_select">
-            <select
-              className="form_select"
-              defaultValue=""
-              value={practice}
-              onChange={handleChange}
-            >
-              <option value="hold" disabled>
-                Practice / Institution*
-              </option>
-              <option value="1">option 1</option>
-              <option value="2">option 2</option>
-              <option value="3">option 3</option>
-              <option value="4">option 4</option>
-              <option value="5">option 5</option>
-            </select>
-            <svg className="form_select_icon">
-              <use href="/symbol-defs.svg#shape"></use>
-            </svg>
-          </div>
+          <CustomSelect
+            lable={"Practice / Institution*"}
+            options={practiceOption}
+            value={practice}
+            setValue={setPractice}
+          />
           <LabelForm
             type="mail"
             name="mail"
@@ -110,45 +119,26 @@ const Form = () => {
             placeholder="Phone Number*"
             value={phone}
           />
-          <div className="form_custom_select">
-            <select
-              className="form_select"
-              defaultValue={"hold"}
-              onChange={handleChange}
-            >
-              <option value="hold" disabled>
-                Medical Profession*
-              </option>
-              <option value="1">option 1</option>
-              <option value="2">option 2</option>
-              <option value="3">option 3</option>
-              <option value="4">option 4</option>
-              <option value="5">option 5</option>
-            </select>
-            <svg className="form_select_icon">
-              <use href="/symbol-defs.svg#shape"></use>
-            </svg>
-          </div>
-        </div>
-        <div className="form_custom_select">
-          <select className="form_select" defaultValue={"hold"}>
-            <option value="hold" disabled>
-              Type of Inquiry*
-            </option>
-            <option value="1">option 1</option>
-            <option value="2">option 2</option>
-            <option value="3">option 3</option>
-            <option value="4">option 4</option>
-            <option value="5">option 5</option>
-          </select>
-          <svg className="form_select_icon">
-            <use href="/symbol-defs.svg#shape"></use>
-          </svg>
+          <CustomSelect
+            lable={"Medical Profession*"}
+            options={professionOption}
+            value={profession}
+            setValue={setProfession}
+          />
         </div>
 
+        <CustomSelect
+          lable={"Type of Inquiry*"}
+          options={typeOption}
+          value={type}
+          setValue={setType}
+        />
         <textarea
           className="form_textarea"
           placeholder="Enter Message*"
+          value={message}
+          name="message"
+          onChange={handleChange}
         ></textarea>
 
         <button className="form_button" type="submit">

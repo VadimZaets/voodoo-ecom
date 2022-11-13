@@ -23,7 +23,7 @@ const InfoBoxComponent = ({ position }) => {
               info@voodoo.com
             </a>
             <a href="tel:+1-800-480-9597" className="info_link">
-              <svg class="info_icon">
+              <svg className="info_icon">
                 <use href="/symbol-defs.svg#tel"></use>
               </svg>
               1-800-480-9597
