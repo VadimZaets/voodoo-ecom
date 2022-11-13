@@ -1,9 +1,10 @@
 import React from "react";
-import { GoogleMap } from "@react-google-maps/api";
+import { GoogleMap, Marker, InfoBox } from "@react-google-maps/api";
 import { defaultTheme } from "./Theme";
 
 import "./css/Map.css";
 import LocationMarker from "../LocationMarker/LocationMarker";
+import InfoBoxComponent from "../InfoBoxComponent/InfoBoxComponent";
 
 const containerStyle = {
   width: "100%",
@@ -11,7 +12,7 @@ const containerStyle = {
 };
 const defaultOptions = {
   panControl: true,
-  zooControl: true,
+  zoomControl: false,
   mapTypeControl: false,
   scaleControl: false,
   streetViewControl: false,
@@ -27,6 +28,7 @@ const center = {
   lat: 43.45261,
   lng: -80.5143,
 };
+
 const Map = () => {
   const mapRef = React.useRef(undefined);
   const onLoad = React.useCallback(function callback(map) {
@@ -37,7 +39,7 @@ const Map = () => {
     mapRef.current = undefined;
   }, []);
   return (
-    <div className="container">
+    <div className="map_container">
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -46,7 +48,9 @@ const Map = () => {
         onUnmount={onUnmount}
         options={defaultOptions}
       >
+        <InfoBoxComponent position={center} />
         <LocationMarker position={center} />
+        {/* <Marker position={center} /> */}
       </GoogleMap>
     </div>
   );
