@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/voodoo-ecom/static/css/main.208b4fed.css",
+    "main.js": "/voodoo-ecom/static/js/main.4235b8ee.js",
+    "index.html": "/voodoo-ecom/index.html",
+    "main.208b4fed.css.map": "/voodoo-ecom/static/css/main.208b4fed.css.map",
+    "main.4235b8ee.js.map": "/voodoo-ecom/static/js/main.4235b8ee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.208b4fed.css",
+    "static/js/main.4235b8ee.js"
+  ]
+}
