@@ -1,20 +1,17 @@
 import { useState } from "react";
-import "./css/CustomSelect.css";
-// const options = ["Mangoes", "Apples", "Oranges"];
-const CustomSelect = ({ header, options }) => {
+import "./CustomSelect.css";
+
+const CustomSelect = ({ lable, options, value, setValue }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
+
   const onOptionClicked = (value) => () => {
-    setSelectedOption(value);
+    setValue(value);
     setIsOpen(false);
-    console.log(selectedOption);
   };
   const toggling = () => setIsOpen(!isOpen);
   return (
-    <div className="drop_down_container">
-      <div className="drop_down_header" onClick={toggling}>
-        {selectedOption || header}
-      </div>
+    <div className="drop_down_container " onClick={toggling}>
+      <div className="drop_down_header">{value || lable}</div>
       {isOpen && (
         <div className="drop_down_list_container">
           <ul className="drop_down_list">
@@ -24,7 +21,7 @@ const CustomSelect = ({ header, options }) => {
                 key={Math.random()}
                 onClick={onOptionClicked(option)}
               >
-                {option}
+                <p className="drop_down_text">{option}</p>
               </li>
             ))}
           </ul>

@@ -2,32 +2,21 @@ import "./css/Form.css";
 import { useState } from "react";
 import LabelForm from "../LabelForm/LabelForm";
 import CustomSelect from "../CustomSelect/CustomSelect";
-
-const typeOption = ["option 1", "option 2", "option 3", "option 4", "option 5"];
-const professionOption = [
-  "option 1",
-  "option 2",
-  "option 3",
-  "option 4",
-  "option 5",
-];
-const practiceOption = [
-  "option 1",
-  "option 2",
-  "option 3",
-  "option 4",
-  "option 5",
-];
-
+import {
+  typeOption,
+  professionOption,
+  practiceOption,
+} from "../../constants/constants";
 const Form = () => {
   const [name, setName] = useState("");
   const [position, setPosition] = useState("");
   const [mail, setMail] = useState("");
   const [phone, setPhone] = useState("");
-  const [practice, setPractice] = useState("hold");
+  const [practice, setPractice] = useState("");
+  const [profession, setProfession] = useState("");
+  const [type, setType] = useState("");
+  const [message, setMessage] = useState("");
 
-  // const [profession, setProfession] = useState("");
-  // const [type, setType] = useState("");
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -51,6 +40,16 @@ const Form = () => {
       case "practice":
         setPractice(value);
         break;
+      case "profession":
+        setProfession(value);
+        break;
+      case "type":
+        setType(value);
+        break;
+
+      case "message":
+        setMessage(value);
+        break;
 
       default:
         return;
@@ -65,7 +64,12 @@ const Form = () => {
   const resetInput = () => {
     setName("");
     setPosition("");
+    setMail("");
+    setPhone("");
     setPractice("");
+    setProfession("");
+    setType("");
+    setMessage("");
   };
 
   return (
@@ -95,8 +99,10 @@ const Form = () => {
           />
 
           <CustomSelect
-            header={"Practice / Institution*"}
+            lable={"Practice / Institution*"}
             options={practiceOption}
+            value={practice}
+            setValue={setPractice}
           />
           <LabelForm
             type="mail"
@@ -114,15 +120,25 @@ const Form = () => {
             value={phone}
           />
           <CustomSelect
-            header={"Medical Profession*"}
+            lable={"Medical Profession*"}
             options={professionOption}
+            value={profession}
+            setValue={setProfession}
           />
         </div>
 
-        <CustomSelect header={"Type of Inquiry*"} options={typeOption} />
+        <CustomSelect
+          lable={"Type of Inquiry*"}
+          options={typeOption}
+          value={type}
+          setValue={setType}
+        />
         <textarea
           className="form_textarea"
           placeholder="Enter Message*"
+          value={message}
+          name="message"
+          onChange={handleChange}
         ></textarea>
 
         <button className="form_button" type="submit">
